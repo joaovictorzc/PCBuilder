@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Builder - PCs Pré-Montados</title>
+    <link rel="stylesheet" href="Pré.css"> <!-- Referência ao arquivo de estilo -->
+    <script>
+        // Função para filtrar PCs de acordo com a categoria e preço
+        function filtrar() {
+            var categoria = document.getElementById("categoria").value;
+            var preco = document.getElementById("preco").value;
+            var pcs = document.querySelectorAll(".pc");
+            
+            pcs.forEach(function(pc) {
+                var pcCategoria = pc.getAttribute("data-categoria");
+                var pcPreco = parseInt(pc.getAttribute("data-preco"));
+                
+                // Exibe ou esconde os PCs conforme o filtro
+                if ((categoria === "todos" || categoria === pcCategoria) && 
+                    (preco === "todos" || pcPreco <= preco)) {
+                    pc.style.display = "block";
+                } else {
+                    pc.style.display = "none";
+                }
+            });
+        }
+
+        // Função para adicionar um PC ao carrinho com especificações
+        function adicionarAoCarrinho(nome, preco, especificacoes) {
+            // Recupera o carrinho do localStorage ou cria um novo
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            
+            // Adiciona o item ao carrinho com nome, preço e especificações
+            carrinho.push({ nome: nome, preco: preco, especificacoes: especificacoes });
+            
+            // Atualiza o localStorage com os novos itens
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+            alert(nome + ' foi adicionado ao carrinho!');
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>PC Builder</h1>
+        <p>Escolha um PC pré-montado para sua necessidade.</p>
+    </header>
+
+    <main>
+        <!-- Filtros de pesquisa -->
+        <div class="filtros">
+            <h2>Filtros</h2>
+            <label for="categoria">Categoria:</label>
+            <select id="categoria" onchange="filtrar()">
+                <option value="todos">Todos</option>
+                <option value="gaming">Gaming</option>
+                <option value="office">Office</option>
+                <option value="workstation">Workstation</option>
+                <option value="multimidia">Multimídia</option>
+            </select>
+
+            <label for="preco">Preço:</label>
+            <select id="preco" onchange="filtrar()">
+                <option value="todos">Todos</option>
+                <option value="5000">Até R$5000</option>
+                <option value="10000">Até R$10000</option>
+                <option value="15000">Até R$15000</option>
+                <option value="20000">Até R$20000</option>
+            </select>
+        </div>
+
+        <!-- Lista de PCs Pré-Montados -->
+        <div class="pre-montados-container">
+            <h2>PCs Pré-Montados</h2>
+            <div class="pcs">
+
+                
+                <!-- PC Gaming 1 -->
+                <div class="pc" data-categoria="gaming" data-preco="8000">
+                    <strong>PC Gaming - R$ 8.000</strong><br>
+                    Processador: Intel Core i7 12ª geração<br>
+                    Placa de Vídeo: NVIDIA RTX 3060<br>
+                    Memória RAM: 16GB DDR4<br>
+                    Armazenamento: SSD 1TB<br>
+                    <p>Ideal para quem busca alta performance em jogos AAA e gráficos exigentes.</p>
+                    <button onclick="adicionarAoCarrinho('PC Gaming - R$ 8.000', 8000, 'Processador: Intel Core i7 12ª geração, Placa de Vídeo: NVIDIA RTX 3060, Memória RAM: 16GB DDR4, Armazenamento: SSD 1TB')">Adicionar ao Carrinho</button>
+                </div>
+
+
+                <!-- PC Gaming 2 -->
+                <div class="pc" data-categoria="gaming" data-preco="12000">
+                    <strong>PC Gaming - R$ 12.000</strong><br>
+                    Processador: AMD Ryzen 7 5800X<br>
+                    Placa de Vídeo: NVIDIA RTX 3070<br>
+                    Memória RAM: 16GB DDR4<br>
+                    Armazenamento: SSD 1TB + HDD 2TB<br>
+                    <p>Perfeito para jogos em 4K e tarefas mais pesadas como streaming.</p> <!-- Descrição -->
+                    <button onclick="adicionarAoCarrinho('PC Gaming - R$ 12.000', 12000, 'Processador: AMD Ryzen 7 5800X, Placa de Vídeo: NVIDIA RTX 3070, Memória RAM: 16GB DDR4, Armazenamento: SSD 1TB + HDD 2TB')">Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- PC Gaming 3 -->
+                <div class="pc" data-categoria="gaming" data-preco="15000">
+                    <strong>PC Gaming - R$ 15.000</strong><br>
+                    Processador: Intel Core i9 12ª geração<br>
+                    Placa de Vídeo: NVIDIA RTX 3080<br>
+                    Memória RAM: 32GB DDR4<br>
+                    Armazenamento: SSD 2TB<br>
+                    <p>Máxima performance para jogos de última geração e criação de conteúdo em 3D.</p> <!-- Descrição -->
+                    <button onclick="adicionarAoCarrinho('PC Gaming - R$ 15.000', 15000, 'Processador: Intel Core i9 12ª geração, Placa de Vídeo: NVIDIA RTX 3080, Memória RAM: 32GB DDR4, Armazenamento: SSD 2TB')">Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- PC Office 1 -->
+                <div class="pc" data-categoria="office" data-preco="3500">
+                    <strong>PC Office - R$ 3.500</strong><br>
+                    Processador: Intel Core i5 10ª geração<br>
+                    Placa de Vídeo: Integrada Intel UHD<br>
+                    Memória RAM: 8GB DDR4<br>
+                    Armazenamento: SSD 512GB<br>
+                    <p>Perfeito para tarefas cotidianas e produtividade no escritório.</p> <!-- Descrição -->
+                    <button onclick="adicionarAoCarrinho('PC Office - R$ 3.500', 3500, 'Processador: Intel Core i5 10ª geração, Placa de Vídeo: Integrada Intel UHD, Memória RAM: 8GB DDR4, Armazenamento: SSD 512GB')">Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- PC Office 2 -->
+                <div class="pc" data-categoria="office" data-preco="5000">
+                    <strong>PC Office - R$ 5.000</strong><br>
+                    Processador: Intel Core i7 11ª geração<br>
+                    Placa de Vídeo: Integrada Intel Iris<br>
+                    Memória RAM: 16GB DDR4<br>
+                    Armazenamento: SSD 1TB<br>
+                    <p>Ótimo para profissionais que precisam de um desempenho rápido e eficiente.</p> <!-- Descrição -->
+                    <button onclick="adicionarAoCarrinho('PC Office - R$ 5.000', 5000, 'Processador: Intel Core i7 11ª geração, Placa de Vídeo: Integrada Intel Iris, Memória RAM: 16GB DDR4, Armazenamento: SSD 1TB')">Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- PC Office 3 -->
+                <div class="pc" data-categoria="office" data-preco="6500">
+                    <strong>PC Office - R$ 6.500</strong><br>
+                    Processador: AMD Ryzen 5 5600X<br>
+                    Placa de Vídeo: Integrada Radeon<br>
+                    Memória RAM: 16GB DDR4<br>
+                    Armazenamento: SSD 1TB<br>
+                    <p>Excelente escolha para multitarefas e desempenho eficiente em softwares de escritório.</p> <!-- Descrição -->
+                    <button onclick="adicionarAoCarrinho('PC Office - R$ 6.500', 6500, 'Processador: AMD Ryzen 5 5600X, Placa de Vídeo: Integrada Radeon, Memória RAM: 16GB DDR4, Armazenamento: SSD 1TB')">Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- PC Workstation 1 -->
+                <div class="pc" data-categoria="workstation" data-preco="17000">
+                    <strong>PC Workstation - R$ 17.000</strong><br>
+                    Processador: Intel Xeon W-2235<br>
+                    Placa de Vídeo: NVIDIA Quadro RTX 4000<br>
+                    Memória RAM: 32GB DDR4<br>
+                    Armazenamento: SSD 1TB + HDD 4TB<br>
+                    <p>Ideal para design gráfico, modelagem 3D e edição de vídeo profissional.</p> <!-- Descrição -->
+                    <button onclick="adicionarAoCarrinho('PC Workstation - R$ 17.000', 17000, 'Processador: Intel Xeon W-2235, Placa de Vídeo: NVIDIA Quadro RTX 4000, Memória RAM: 32GB DDR4, Armazenamento: SSD 1TB + HDD 4TB')">Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- PC Workstation 2 -->
+                <div class="pc" data-categoria="workstation" data-preco="20000">
+                    <strong>PC Workstation - R$ 20.000</strong><br>
+                    Processador: AMD Threadripper 3960X<br>
+                    Placa de Vídeo: NVIDIA RTX A5000<br>
+                    Memória RAM: 64GB DDR4<br>
+                    Armazenamento: SSD 2TB + HDD 6TB<br>
+                    <p>Desempenho extremo para profissionais de CGI, efeitos especiais e engenharia.</p> <!-- Descrição -->
+                    <button onclick="adicionarAoCarrinho('PC Workstation - R$ 20.000', 20000, 'Processador: AMD Threadripper 3960X, Placa de Vídeo: NVIDIA RTX A5000, Memória RAM: 64GB DDR4, Armazenamento: SSD 2TB + HDD 6TB')">Adicionar ao Carrinho</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+     <!-- Botão para mostrar carrinho -->
+     <button onclick="window.location.href='Carrinho.html'">Ver Carrinho</button>
+
+     <!-- Botão de Voltar -->
+     <button class="voltar" onclick="window.location.href='tela2.html'">Voltar</button>
+ </main>
+
+ <footer>
+     <p>&copy; 2024 PC Builder. Todos os direitos reservados.</p>
+ </footer>
+
+</body>
+</html>

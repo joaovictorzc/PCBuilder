@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Builder - Carrinho</title>
+    <link rel="stylesheet" href="Carrinho.css">
+    <script>
+        // Carrega o carrinho do localStorage e exibe os itens
+        function carregarCarrinho() {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            let lista = document.getElementById('lista-carrinho');
+            let total = 0;
+
+            // Limpa a lista antes de carregar novamente
+            lista.innerHTML = '';
+
+            // Adiciona os itens ao HTML
+            carrinho.forEach(item => {
+                let li = document.createElement('li');
+                li.innerHTML = `${item.nome} - R$${item.preco} <br> <small>${item.especificacoes}</small>`;
+                lista.appendChild(li);
+                total += item.preco;
+            });
+
+            // Atualiza o total
+            document.getElementById('total').textContent = `Total: R$${total}`;
+        }
+
+        // Limpa o carrinho
+        function limparCarrinho() {
+            localStorage.removeItem('carrinho');
+            carregarCarrinho();
+            alert('Carrinho limpo!');
+        }
+    </script>
+</head>
+<body onload="carregarCarrinho()">
+
+    <header>
+        <h1>PC Builder - Carrinho</h1>
+    </header>
+
+    <main>
+        <h2>Itens no Carrinho</h2>
+        <ul id="lista-carrinho"></ul>
+        <h3 id="total"></h3>
+        <button onclick="limparCarrinho()">Limpar Carrinho</button>
+        <button onclick="window.location.href='Compra.html'">Finalizar Compra</button>
+        <button onclick="window.location.href='Pré.html'">Voltar</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PC Builder. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

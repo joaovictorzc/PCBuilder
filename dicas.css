@@ -1,0 +1,116 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #6200ea;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Conteúdo principal */
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dicas-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Seções de dicas */
+section.dica {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+section.dica:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+section.dica h2 {
+    color: #6200ea;
+    margin: 0 0 10px;
+    font-size: 20px;
+}
+
+section.dica p {
+    line-height: 1.6;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Botão voltar */
+button.voltar {
+    background-color: #6200ea;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button.voltar:hover {
+    background-color: #3700b3;
+}
+
+/* Rodapé */
+footer {
+    background-color: #6200ea;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    section.dica {
+        padding: 15px;
+    }
+
+    section.dica h2 {
+        font-size: 18px;
+    }
+
+    section.dica p {
+        font-size: 14px;
+    }
+
+    button.voltar {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

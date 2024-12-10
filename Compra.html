@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra</title>
+    <link rel="stylesheet" href="compra.css">
+</head>
+<body>
+    <header>
+        <h1>Finalizar Compra</h1>
+    </header>
+    <main>
+        <div class="compra-container">
+            <h2>Resumo do Pedido</h2>
+            <div class="resumo-pedido">
+                <p><strong>Itens:</strong> <span id="itens"></span></p>
+                <p><strong>Total:</strong> R$ <span id="total"></span></p>
+            </div>
+            
+            <h2>Métodos de Pagamento</h2>
+            <form class="form-pagamento">
+                <!-- Cartão de Crédito -->
+                <div class="metodo">
+                    <label>
+                        <input type="radio" name="pagamento" value="cartao_credito" required>
+                        Cartão de Crédito
+                    </label>
+                    <div class="detalhes" id="cartao-detalhes">
+                        <input type="text" placeholder="Número do Cartão" maxlength="16">
+                        <input type="text" placeholder="Nome no Cartão">
+                        <div class="grid">
+                            <input type="text" placeholder="Validade (MM/AA)" maxlength="5">
+                            <input type="text" placeholder="CVV" maxlength="3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cartão de Débito -->
+                <div class="metodo">
+                    <label>
+                        <input type="radio" name="pagamento" value="cartao_debito">
+                        Cartão de Débito
+                    </label>
+                </div>
+
+                <!-- Boleto Bancário -->
+                <div class="metodo">
+                    <label>
+                        <input type="radio" name="pagamento" value="boleto">
+                        Boleto Bancário
+                    </label>
+                </div>
+
+                <!-- PIX -->
+                <div class="metodo">
+                    <label>
+                        <input type="radio" name="pagamento" value="pix">
+                        PIX
+                    </label>
+                </div>
+
+                <!-- PayPal -->
+                <div class="metodo">
+                    <label>
+                        <input type="radio" name="pagamento" value="paypal">
+                        PayPal
+                    </label>
+                </div>
+
+                <!-- Pagamento por Transferência Bancária -->
+                <div class="metodo">
+                    <label>
+                        <input type="radio" name="pagamento" value="transferencia_bancaria">
+                        Transferência Bancária
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-finalizar">Finalizar Compra</button>
+            </form>
+        </div>
+
+        <!-- Botão Voltar -->
+        <button class="voltar" onclick="window.location.href='carrinho.html'">Voltar</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 PC Builder. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Simulação de carregamento dos dados do pedido
+        const itens = JSON.parse(localStorage.getItem('carrinho')) || [];
+        const total = itens.reduce((sum, item) => sum + item.preco, 0);
+
+        // Renderiza os dados no HTML
+        document.getElementById('itens').textContent = itens.map(item => item.nome).join(', ');
+        document.getElementById('total').textContent = total.toFixed(2);
+    </script>
+</body>
+</html>
