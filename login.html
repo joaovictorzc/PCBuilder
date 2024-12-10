@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PC Builder</title>
+    <link rel="stylesheet" href="login.css">
+    <script>
+        // Função para autenticar o usuário
+        function autenticar() {
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+
+            // Recuperar cadastros salvos no localStorage
+            const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+            // Verificar se o email e senha correspondem a um usuário cadastrado
+            const usuarioEncontrado = usuarios.find(user => user.email === email && user.senha === senha);
+
+            if (usuarioEncontrado) {
+                alert("Login realizado com sucesso!");
+                window.location.href = "tela2.html"; // Redireciona para a próxima página
+            } else {
+                alert("E-mail ou senha incorretos!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Login</h1>
+    </header>
+
+    <main>
+        <form onsubmit="event.preventDefault(); autenticar();">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" required>
+            
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" required>
+            
+            <button type="submit">Entrar</button>
+        </form>
+        <p>Não possui uma conta? <a href="cadastro.html">Cadastre-se aqui</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PC Builder. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

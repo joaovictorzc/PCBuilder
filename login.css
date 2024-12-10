@@ -1,0 +1,128 @@
+/* Configurações gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #0044cc, #002b80);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #d9e6ff;
+}
+
+/* Contêiner principal */
+main {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Títulos */
+h2 {
+    text-align: center;
+    color: #0044cc;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+input:focus {
+    border-color: #0044cc;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 68, 204, 0.5);
+}
+
+/* Botão de ação */
+button {
+    padding: 12px;
+    font-size: 1rem;
+    background: linear-gradient(to right, #0044cc, #002b80);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #002b80, #0044cc);
+}
+
+/* Link de navegação */
+a {
+    text-decoration: none;
+    color: #0044cc;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #002b80;
+}
+
+/* Seção do visitante */
+.visitor-option {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.visitor-option button {
+    width: 100%;
+    background-color: #ffaa00;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.visitor-option button:hover {
+    background-color: #cc8800;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #d9e6ff;
+    font-size: 0.9rem;
+}

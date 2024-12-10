@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - PC Builder</title>
+    <link rel="stylesheet" href="login.css">
+    <script>
+        // Função para salvar os dados do usuário
+        function cadastrar() {
+            const nome = document.getElementById("nome").value;
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+
+            // Recuperar cadastros existentes no localStorage
+            const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+            // Verificar se o email já está cadastrado
+            if (usuarios.some(user => user.email === email)) {
+                alert("E-mail já cadastrado!");
+                return;
+            }
+
+            // Adicionar novo usuário ao array
+            usuarios.push({ nome, email, senha });
+
+            // Salvar no localStorage
+            localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+            alert("Cadastro realizado com sucesso!");
+            window.location.href = "login.html"; // Redireciona para a tela de login
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Cadastro</h1>
+    </header>
+
+    <main>
+        <form onsubmit="event.preventDefault(); cadastrar();">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+            
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" required>
+            
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" required>
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+        <p>Já possui uma conta? <a href="login.html">Faça login aqui</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PC Builder. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
